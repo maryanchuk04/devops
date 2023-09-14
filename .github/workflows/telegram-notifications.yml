@@ -30,8 +30,7 @@ jobs:
           message: |
             🚀 **New Pull Request**
 
-            **✨ Title:** ${{ steps.pr_details.outputs.title }}
-            **💥 Description:** ${{ steps.pr_details.outputs.body }}
-            **🔀 Branch:** ${{ steps.pr_details.outputs.branch }} ===> ${{ steps.pr_details.outputs.base_branch }}
+            **💥 Title:** ${{ steps.pr_details.outputs.title }}
+            **🔀 Branch:** ${{ steps.pr_details.outputs.branch }} => ${{ steps.pr_details.outputs.base_branch }}
             **👤 Created by:** ${{ steps.pr_details.outputs.user }}
             **🔗 Link:** [View PR](${{ steps.pr_details.outputs.pr_url }})
