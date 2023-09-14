@@ -17,7 +17,9 @@ jobs:
           echo "::set-output name=title::$(echo ${{ github.event.pull_request.title }})"
           echo "::set-output name=body::$(echo ${{ github.event.pull_request.body }})"
           echo "::set-output name=branch::$(echo ${{ github.event.pull_request.head.ref }})"
+          echo "::set-output name=base_branch::$(echo ${{ github.event.pull_request.base.ref }})"
           echo "::set-output name=user::$(echo ${{ github.event.pull_request.user.login }})"
+          echo "::set-output name=pr_url::$(echo ${{ github.event.pull_request.html_url }})"
 
       - name: Telegram Notify
         uses: appleboy/telegram-action@master
@@ -26,10 +28,10 @@ jobs:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           format: markdown
           message: |
-            🚀🔥 **New Pull Request ** 🔥🚀
+            🚀 **New Pull Request**
 
-            **Title:** ${{ steps.pr_details.outputs.title }}
-            **Description:** ${{ steps.pr_details.outputs.body }}
-            **Branch:** ${{ steps.pr_details.outputs.branch }}
-            **Created by:** ${{ steps.pr_details.outputs.user }}
-            **Link:** [View PR](https://github.com/maryanchuk04/devops/pulls)
+            **✨ Title:** ${{ steps.pr_details.outputs.title }}
+            **💥 Description:** ${{ steps.pr_details.outputs.body }}
+            **🔀 Branch:** ${{ steps.pr_details.outputs.branch }} ===> ${{ steps.pr_details.outputs.base_branch }}
+            **👤 Created by:** ${{ steps.pr_details.outputs.user }}
+            **🔗 Link:** [View PR](${{ steps.pr_details.outputs.pr_url }})
